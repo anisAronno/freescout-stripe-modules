@@ -1,0 +1,23 @@
+{
+    "name": "Stripe",
+    "alias": "stripe",
+    "description": "Show customer's stripe data.",
+    "version": "1.0.0",
+    "detailsUrl": "https://github.com/anis3139/freescout-stripe-modules",
+    "author": "Anichur Rahaman",
+    "authorUrl": "https://github.com/anis3139",
+    "requiredAppVersion": "1.0.2",
+    "license": "AGPL-3.0",
+    "keywords": [],
+    "active": 0,
+    "order": 0,
+    "img": "",
+    "providers": [
+        "Modules\\Stripe\\Providers\\StripeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

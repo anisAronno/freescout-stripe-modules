@@ -1,0 +1,31 @@
+{
+    "name": "anis3139/freescout-stripe-modules",
+    "description": "Freescout stripe modules",
+    "version": "1.0.0",
+    "keywords": ["helpdesk", "help desk", "shared mailbox", "freescout", "wedevs", "stripe"],
+    "license": "AGPL-3.0",
+    "authors": [
+        {
+            "name": "Anichur Rahaman",
+            "email": "contact@anichur.com"
+        }
+    ], 
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Stripe\\Providers\\StripeServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Stripe\\": ""
+        }
+    },
+    "require": {
+        "stripe/stripe-php": "^10.4"
+    }
+}
