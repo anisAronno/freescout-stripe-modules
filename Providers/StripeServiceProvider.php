@@ -8,7 +8,6 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Stripe\Api\Stripe;
 use Modules\Stripe\Entities\StripeSetting;
 use View;
-use Illuminate\Support\Facades\Cache;
 
 //Module alias
 define('STRIPE_MODULE', 'stripe');
@@ -30,7 +29,8 @@ class StripeServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerConfig();
-        $this->registerTranslations();
+        $this->registerAssets();
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
@@ -40,11 +40,11 @@ class StripeServiceProvider extends ServiceProvider
      */
 
     public function boot()
-    {
-        $this->registerConfig();
+    { 
         $this->registerViews();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadRoutesFrom(__DIR__.'/../Http/routes.php');
         $this->hooks();
+        $this->registerTranslations();
     }
 
 
@@ -79,11 +79,6 @@ class StripeServiceProvider extends ServiceProvider
         \Eventy::addAction('customer.profile.extra', [$this, 'customerProfileExtra']);
 
         \Eventy::addAction('mailboxes.settings.menu', [$this, 'mailboxSettingsMenu']);
-
-        \Eventy::addFilter('javascripts', function ($javascripts) {
-            $javascripts[] = \Module::getPublicPath(STRIPE_MODULE).'/js/stripe.js';
-            return $javascripts;
-        });
     }
 
     /**
@@ -179,6 +174,18 @@ class StripeServiceProvider extends ServiceProvider
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/stripe';
         }, \Config::get('view.paths')), [$sourcePath]), 'stripe');
+    }
+
+
+    /**
+     * Register views.
+     * @return void
+     */
+    public function registerAssets()
+    {
+        $this->publishes([
+            __DIR__.'/../Public/css' => public_path('modules/stripe/css'),
+        ], 'public');
     }
 
     /**
