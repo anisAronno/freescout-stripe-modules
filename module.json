@@ -2,7 +2,7 @@
     "name": "Stripe",
     "alias": "stripe",
     "description": "Show customer's stripe data.",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "detailsUrl": "https://github.com/anis3139/freescout-stripe-modules",
     "author": "Anichur Rahaman",
     "authorUrl": "https://github.com/anis3139",
