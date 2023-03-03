@@ -6,10 +6,10 @@ A free FreeScout module to integrate Stripe with FreeScout. View critical custom
 
 ### • Install as a laravel package
 
-Add `anisAronno/freescout-stripe-modules` package to your dependencies.
+Add `anisaronno/freescout-stripe-modules` package to your dependencies.
 
 ```bash
-composer require "anisAronno/freescout-stripe-modules"
+composer require "anisaronno/freescout-stripe-modules"
 ```
 
 After requiring package, add service provider of this package to providers in `config/app.php`.
